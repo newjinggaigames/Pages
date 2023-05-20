@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>loading...</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="refresh" content="5;url= indexto.html">
+</head>
+<body style="background:black">
+<div id="div1" style="position:absolute;width:322px;height:14px;border:1px #707888 solid;overflow:hidden">
+	<div style="position:absolute;top:-1px;left:0" id="pimg">
+	</div>
+</div>
+<div id="div2" style="position:absolute;top:30px;left:120px;font-size:9pt;color:#f4f4f4">
+检测您的链接是否安全
+</div>
+<script type="text/javascript">
+s=new Array("#050626","#0a0b44","#0f1165","#1a1d95","#1c1fa7","#1c20c8","#060cff");
+//s=new Array("#333333","#555555","#777777","#999999","#AAAAAA","#CCCCCC","#EEEEEE");
+div1.style.top=Math.floor((document.body.clientHeight-14)/2)+"px";
+div1.style.left=Math.floor((document.body.clientWidth-322)/2)+"px";
+div2.style.top=parseInt(div1.offsetTop)+20+"px";
+div2.style.left=parseInt(div1.offsetLeft)+120+"px";
+function Larrange(){
+	pimg.innerHTML="";
+	for(i=0;i<9;i++){
+		pimg.innerHTML+="<input style=\"width:15px;height:10px;border:0;background:"+s[i]+";margin:1\">";
+	}
+}
+function Rarrange(){
+	pimg.innerHTML="";
+	for(i=9;i>-1;i--){
+		pimg.innerHTML+="<input style=\"width:15px;height:10px;border:0;background:"+s[i]+";margin:1\">";
+	}
+}
+var is=0;size=0;
+function move(){
+	if(pimg.offsetLeft<350&&is==0){
+		if(size==0){Larrange();size=1;}
+		pimg.style.left=pimg.offsetLeft+3+"px";
+		setTimeout("move()",1);
+		return;
+	}
+	is=1;
+	if(pimg.offsetLeft>-200&&is==1){
+		if(size==1){Rarrange();size=0;}
+		pimg.style.left=pimg.offsetLeft-3+"px";
+		setTimeout("move()",1);
+		return;
+	}
+	is=0;
+	move();
+}
+function flashs(){
+	if(div2.style.color=="#ffffff"){
+		div2.style.color="#707888";
+		setTimeout('flashs()',500);
+	}
+	else{
+		div2.style.color="#ffffff";
+		setTimeout('flashs()',500);
+	}
+}
+Larrange();
+flashs();
+move();
+</script>
+</body>
+</html>
